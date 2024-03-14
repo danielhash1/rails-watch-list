@@ -1,0 +1,20 @@
+<h1> <%= @list.name %></h1>
+
+<%= simple_form_for([@list, @bookmark]) do |f| %>
+  <%= f.association :movie, collection: Movie.all %>
+  <%= f.input :comment %>
+  <%= f.button :submit %>
+<% end %>
+
+<ul>
+  <% @list.movies.each do |movie| %>
+  <li> <h3> <%= movie.title %> </h3>
+  <p> <%= Bookmark.find_by({ list:@list, movie:movie }).comment %> </p>
+  <span> <%= Bookmark.find_by({ list:@list, movie:movie }).poster_url %></span>
+  </li>
+
+  <% end %>
+</ul>
+
+
+<p> <%= link_to "<- Back", lists_path %> </p>
