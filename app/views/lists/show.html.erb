@@ -10,9 +10,9 @@
   <% @list.movies.each do |movie| %>
   <li> <h3> <%= movie.title %> </h3>
   <p> <%= Bookmark.find_by({ list:@list, movie:movie }).comment %> </p>
-  <span> <%= Bookmark.find_by({ list:@list, movie:movie }).poster_url %></span>
+  <%# <> <%= Movie.find_by({ list:@list, movie:movie }).poster_url %>
+  <%= image_tag movie.poster_url, style:"height: 200px" %>
   </li>
-
   <% end %>
 </ul>
 
